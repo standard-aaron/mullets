@@ -1,2 +1,2 @@
 # mullets
-multi-locus time-series analysis
+**mul**ti-**l**ocus **t**ime-**s**eries analysis
