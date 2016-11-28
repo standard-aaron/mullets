@@ -1,3 +1,4 @@
+from __future__ import division 
 
 import numpy as np 
 import itertools
@@ -17,7 +18,7 @@ def generate_phi(prior):
 	"""
 	return np.random.dirichlet(prior)
  
-def calc_joint_dist(phi_fns, x, Z):
+def calc_joint_prob(phi_fns, x, Z):
 	"""
 	Add documentation 
 	"""
@@ -38,7 +39,7 @@ def get_normalizer(phi_fns):
 	all_tups = list(itertools.product([0, 1], repeat=L)) # All binary permutations 
 	total_prob = 0 
 	for tup in all_tups:
-		total_prob += calc_joint_dist(phi_fns, tup, False) # Get unnormalized prob 
+		total_prob += calc_joint_prob(phi_fns, tup, False) # Get unnormalized prob 
 	return total_prob
 
 def make_dist(phi_fns, normalize):
@@ -50,7 +51,7 @@ def make_dist(phi_fns, normalize):
 	else:
 		normalizer = False 
 
-	return lambda x: calc_joint_dist(phi_fns, x, normalizer) # e.g. x = (0, 1, 0, .., 1) length l 
+	return lambda x: calc_joint_prob(phi_fns, x, normalizer) # e.g. x = (0, 1, 0, .., 1) length l 
 
 # Generate P from a prior distribution
 def generate_P(L, prior_mat, normalize=False):
