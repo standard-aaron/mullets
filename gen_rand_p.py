@@ -16,8 +16,7 @@ def generate_phi(prior):
 	Note: Higher P_ij means that the 
 	"""
 	return np.random.dirichlet(prior)
-
-# TODO - right now an unnormalized prob dist 
+ 
 def calc_joint_dist(phi_fns, x, Z):
 	"""
 	Add documentation 
